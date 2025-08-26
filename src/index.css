@@ -17,24 +17,41 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 214 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 214 100% 85%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 214 100% 95%;
+    --accent-foreground: 214 100% 40%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 214 100% 60%;
+
+    /* Water delivery theme colors */
+    --water-blue: 214 100% 60%;
+    --water-blue-light: 214 100% 85%;
+    --water-blue-dark: 214 100% 40%;
+    --ocean-blue: 200 100% 50%;
+    --sky-blue: 195 100% 85%;
+    
+    /* Gradients */
+    --gradient-water: linear-gradient(135deg, hsl(214 100% 60%), hsl(200 100% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(214 100% 95%) 0%, hsl(195 100% 85%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 24px hsl(214 100% 60% / 0.1);
+    --shadow-medium: 0 8px 32px hsl(214 100% 60% / 0.15);
+    --shadow-strong: 0 16px 48px hsl(214 100% 60% / 0.2);
 
     --radius: 0.5rem;
 
