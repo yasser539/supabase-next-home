@@ -1,8 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import deliveryService from "@/assets/delivery-service.jpg"
+import { useTranslation } from "react-i18next"
 
 const About = () => {
+  const { t } = useTranslation()
   const waterComposition = [
     { mineral: "Calcium (Ca²⁺)", value: "80 mg/L" },
     { mineral: "Magnesium (Mg²⁺)", value: "26 mg/L" },
@@ -19,10 +21,10 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           <div>
             <h2 className="text-4xl font-bold mb-8">
-              WATER <span className="text-primary">COMPOSITION</span>
+              {t('about.composition', 'WATER')} <span className="text-primary">{t('about.compositionHighlight', 'COMPOSITION')}</span>
             </h2>
             <p className="text-muted-foreground mb-8">
-              Our water is carefully tested and contains essential minerals for optimal health and taste.
+              {t('about.description', 'Our water is carefully tested and contains essential minerals for optimal health and taste.')}
             </p>
             
             <div className="grid grid-cols-2 gap-4">
@@ -47,11 +49,10 @@ const About = () => {
         {/* Our Story Section */}
         <div className="text-center space-y-8 mb-16">
           <h2 className="text-4xl font-bold">
-            OUR <span className="text-primary">STORY</span>
+            {t('about.our', 'OUR')} <span className="text-primary">{t('about.story', 'STORY')}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our company was founded in 2010. When faced initially as a personal health issue to access fresh, 
-            clean drinking water. The company is world-class and lead.
+            {t('about.storyText', 'Our company was founded in 2010. When faced initially as a personal health issue to access fresh, clean drinking water. The company is world-class and lead.')}
           </p>
         </div>
 

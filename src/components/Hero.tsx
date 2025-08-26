@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button"
 import { Play, ArrowRight } from "lucide-react"
 import heroWaterBottle from "@/assets/hero-water-bottle.jpg"
+import { useTranslation } from "react-i18next"
 
 const Hero = () => {
+  const { t } = useTranslation()
   return (
     <section className="relative bg-gradient-hero min-h-screen flex items-center overflow-hidden">
       {/* Background decoration */}
@@ -14,20 +16,20 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-                <span className="text-foreground">BOTTLED</span>{" "}
+                <span className="text-foreground">{t('hero.part1', 'BOTTLED')}</span>{" "}
                 <span className="bg-gradient-water bg-clip-text text-transparent">
-                  WATER DELIVERY
+                  {t('hero.part2', 'WATER DELIVERY')}
                 </span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-lg">
-                Pure, fresh water delivered right to your doorstep. Experience the convenience of premium hydration with our reliable delivery service.
+                {t('hero.subtitle', 'Pure, fresh water delivered right to your doorstep. Experience the convenience of premium hydration with our reliable delivery service.')}
               </p>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="water" size="lg" className="text-lg">
-                Order Now
+                {t('order')}
                 <ArrowRight className="h-5 w-5" />
               </Button>
               
@@ -41,15 +43,15 @@ const Hero = () => {
             <div className="flex gap-8 pt-8">
               <div>
                 <div className="text-3xl font-bold text-primary">500+</div>
-                <div className="text-sm text-muted-foreground">Happy Customers</div>
+                <div className="text-sm text-muted-foreground">{t('stats.happyCustomers', 'Happy Customers')}</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary">24/7</div>
-                <div className="text-sm text-muted-foreground">Delivery Service</div>
+                <div className="text-sm text-muted-foreground">{t('stats.deliveryService', 'Delivery Service')}</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary">100%</div>
-                <div className="text-sm text-muted-foreground">Pure Water</div>
+                <div className="text-sm text-muted-foreground">{t('stats.pureWater', 'Pure Water')}</div>
               </div>
             </div>
           </div>

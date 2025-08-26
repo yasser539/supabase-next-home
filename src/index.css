@@ -119,4 +119,22 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+  /* subtle logo pulse and order button hover animation */
+  .logo-animate {
+    transition: transform 300ms ease, opacity 300ms ease;
+  }
+
+  .logo-animate:hover {
+    transform: translateY(-3px) scale(1.02);
+    opacity: 0.95;
+  }
+
+  .order-btn {
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+
+  .order-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px hsl(var(--water-blue) / 0.12);
+  }
 }

@@ -1,0 +1,68 @@
+{
+  "logo": "Wavio",
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "products": "Products",
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact Us"
+  },
+  "support": "24/7 Support: 1-800-WAVIO",
+  "order": "Order Now",
+  "contact": {
+    "title": "Contact Us",
+    "description": "Fill the form and we will contact you soon.",
+    "firstName": "First Name",
+    "back": "Back",
+    "lastName": "Last Name",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "note": "Note",
+    "submit": "Send",
+    "submitted": "Your message was submitted",
+    "sending": "Sending...",
+    "successTitle": "Message sent",
+    "errorTitle": "Submission failed",
+    "formErrorTitle": "Please fix the errors",
+    "formErrorDesc": "Some fields are invalid"
+  },
+  "careers": {
+    "title": "Careers",
+    "description": "Join our team - we are hiring!",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phone": "Mobile Number",
+    "email": "Email",
+    "specialty": "Specialty",
+    "nationality": "Nationality",
+    "uploadLabel": "Upload CV (PDF or image)",
+    "submit": "Apply",
+    "submitted": "Your application was submitted",
+    "successTitle": "Application sent",
+    "errorTitle": "Submission failed",
+    "formErrorTitle": "Please fix the errors",
+    "formErrorDesc": "Some fields are invalid"
+  }
+  ,"hero":{
+    "part1":"BOTTLED",
+    "part2":"WATER DELIVERY",
+    "subtitle":"Pure, fresh water delivered right to your doorstep. Experience the convenience of premium hydration with our reliable delivery service."
+  },
+  "stats":{
+    "happyCustomers":"Happy Customers",
+    "deliveryService":"Delivery Service",
+    "pureWater":"Pure Water"
+  },
+  "about":{
+    "composition":"WATER",
+    "compositionHighlight":"COMPOSITION",
+    "description":"Our water is carefully tested and contains essential minerals for optimal health and taste.",
+    "our":"OUR",
+    "story":"STORY",
+    "storyText":"Our company was founded in 2010. When faced initially as a personal health issue to access fresh, clean drinking water. The company is world-class and lead."
+  }
+}
+
+
