@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import { MapPin, Phone, Mail } from "lucide-react"
 import { 
   Facebook, 
   Twitter, 
