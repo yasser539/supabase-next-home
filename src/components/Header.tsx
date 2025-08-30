@@ -78,10 +78,12 @@ const Header = () => {
               <Search className="h-4 w-4" />
             </Button>
             
-            <Button variant="water-outline" size="sm" className="order-btn hidden sm:flex">
-              <ShoppingCart className="h-4 w-4 mr-2" />
-              {t('order')}
-            </Button>
+            <Link to="/contact">
+              <Button variant="water-outline" size="sm" className="order-btn hidden sm:flex">
+                <ShoppingCart className="h-4 w-4 mr-2" />
+                {t('order')}
+              </Button>
+            </Link>
 
             <Button variant="ghost" size="sm" onClick={toggleLanguage} aria-label="Toggle language">
               <Globe className="h-4 w-4" />
@@ -147,10 +149,12 @@ const Header = () => {
                 {t('nav.contact')}
               </Link>
               <div className="pt-2">
-                <Button variant="water-outline" size="sm" className="w-full">
-                  <ShoppingCart className="h-4 w-4 mr-2" />
-                  {t('order')}
-                </Button>
+                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button variant="water-outline" size="sm" className="w-full">
+                    <ShoppingCart className="h-4 w-4 mr-2" />
+                    {t('order')}
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>
