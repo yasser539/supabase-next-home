@@ -48,7 +48,21 @@
   ,"hero":{
     "part1":"BOTTLED",
     "part2":"WATER DELIVERY",
-    "subtitle":"Pure, fresh water delivered right to your doorstep. Experience the convenience of premium hydration with our reliable delivery service."
+    "subtitle":"Pure, fresh water delivered right to your doorstep. Experience the convenience of premium hydration with our reliable delivery service.",
+    "readMore": "Read More"
+  },
+  "services": {
+    "fastDelivery": "Fast Delivery",
+    "fastDeliveryDesc": "Same-day delivery available in most areas. Get your water when you need it most.",
+    "support247": "24/7 Service", 
+    "support247Desc": "Round-the-clock customer support and emergency water delivery services.",
+    "qualityAssured": "Quality Assured",
+    "qualityAssuredDesc": "All our water goes through rigorous testing to ensure the highest purity standards.",
+    "pureFresh": "Pure & Fresh",
+    "pureFreshDesc": "Premium quality water sourced from natural springs and purified using advanced filtration.",
+    "title1": "PURE WATER",
+    "title2": "DELIVERY SERVICE",
+    "subtitle": "We offer various different types of bottled water. To drink the best water available you need an excellent and safe water company."
   },
   "stats":{
     "happyCustomers":"Happy Customers",

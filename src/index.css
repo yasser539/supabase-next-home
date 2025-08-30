@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Modern Design System with Enhanced UI/UX */
 
 @layer base {
   :root {
@@ -17,86 +15,78 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 214 100% 60%;
+    --primary: 210 100% 56%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 214 100% 85%;
+    --primary-light: 210 100% 85%;
+    --primary-dark: 210 100% 40%;
 
-    --secondary: 0 0% 96%;
+    --secondary: 210 40% 96%;
     --secondary-foreground: 222.2 84% 4.9%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 214 100% 95%;
-    --accent-foreground: 214 100% 40%;
+    --accent: 210 40% 94%;
+    --accent-foreground: 222.2 84% 4.9%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 214 100% 60%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 210 100% 56%;
 
-    /* Water delivery theme colors */
-    --water-blue: 214 100% 60%;
-    --water-blue-light: 214 100% 85%;
-    --water-blue-dark: 214 100% 40%;
+    /* Enhanced Water Theme Colors */
+    --water-blue: 210 100% 56%;
+    --water-blue-light: 210 100% 85%;
+    --water-blue-dark: 210 100% 40%;
     --ocean-blue: 200 100% 50%;
     --sky-blue: 195 100% 85%;
+    --glass-blue: 200 100% 97%;
     
-    /* Gradients */
-    --gradient-water: linear-gradient(135deg, hsl(214 100% 60%), hsl(200 100% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(214 100% 95%) 0%, hsl(195 100% 85%) 100%);
+    /* Modern Gradients */
+    --gradient-water: linear-gradient(135deg, hsl(210 100% 56%), hsl(200 100% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(210 100% 97%) 0%, hsl(195 100% 85%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(200 100% 50% / 0.1) 0%, hsla(210 100% 56% / 0.05) 100%);
+    --gradient-card: linear-gradient(145deg, hsla(0 0% 100% / 0.8) 0%, hsla(210 40% 98% / 0.4) 100%);
     
-    /* Shadows */
-    --shadow-soft: 0 4px 24px hsl(214 100% 60% / 0.1);
-    --shadow-medium: 0 8px 32px hsl(214 100% 60% / 0.15);
-    --shadow-strong: 0 16px 48px hsl(214 100% 60% / 0.2);
+    /* Enhanced Shadows with Modern Depth */
+    --shadow-soft: 0 1px 3px 0 hsl(210 100% 56% / 0.1), 0 1px 2px 0 hsl(210 100% 56% / 0.06);
+    --shadow-medium: 0 4px 6px -1px hsl(210 100% 56% / 0.1), 0 2px 4px -1px hsl(210 100% 56% / 0.06);
+    --shadow-large: 0 10px 15px -3px hsl(210 100% 56% / 0.1), 0 4px 6px -2px hsl(210 100% 56% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(210 100% 56% / 0.1), 0 10px 10px -5px hsl(210 100% 56% / 0.04);
+    --shadow-glass: 0 8px 32px hsl(210 100% 56% / 0.08);
+    --shadow-glow: 0 0 20px hsl(210 100% 56% / 0.15);
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
-
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
@@ -118,27 +108,131 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   body {
-    @apply bg-background text-foreground;
-  }
-  /* subtle logo pulse and order button hover animation */
-  .logo-animate {
-    transition: transform 300ms ease, opacity 300ms ease;
+    @apply bg-background text-foreground font-inter antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  .logo-animate:hover {
-    transform: translateY(-3px) scale(1.02);
-    opacity: 0.95;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-semibold;
+  }
+}
+
+@layer components {
+  /* Modern Glass Morphism Effects */
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .glass-card {
+    @apply bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-sm border border-white/20;
+  }
+
+  /* Enhanced Animation Classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  /* Interactive Elements */
+  .interactive-card {
+    @apply transition-all duration-300 hover:shadow-large hover:-translate-y-1 cursor-pointer;
+  }
+
+  .interactive-button {
+    @apply transition-all duration-200 active:scale-95 hover:shadow-glow;
+  }
+
+  /* Logo and Brand Elements */
+  .logo-animate {
+    @apply transition-all duration-300 hover:scale-105;
+    filter: drop-shadow(0 4px 8px hsl(210 100% 56% / 0.1));
   }
 
   .order-btn {
-    transition: transform 200ms ease, box-shadow 200ms ease;
+    @apply transition-all duration-200 hover:-translate-y-0.5 hover:shadow-glow;
   }
 
-  .order-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px hsl(var(--water-blue) / 0.12);
+  /* Typography Enhancements */
+  .heading-primary {
+    @apply font-poppins font-bold text-4xl lg:text-6xl leading-tight;
+    background: linear-gradient(135deg, hsl(222.2 84% 4.9%), hsl(210 100% 40%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .heading-gradient {
+    background: var(--gradient-water);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Modern Card Styles */
+  .modern-card {
+    @apply bg-gradient-to-br from-white via-white to-glass-blue border-0 shadow-glass rounded-2xl overflow-hidden;
+  }
+
+  .service-card {
+    @apply modern-card interactive-card p-8 text-center group;
+  }
+
+  .feature-card {
+    @apply modern-card interactive-card p-6;
+  }
+}
+
+@layer utilities {
+  /* Custom Keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes glow {
+    0% { box-shadow: 0 0 20px hsl(210 100% 56% / 0.1); }
+    100% { box-shadow: 0 0 30px hsl(210 100% 56% / 0.2); }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Utility Classes */
+  .text-balance {
+    text-wrap: balance;
   }
 }
