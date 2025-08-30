@@ -8,6 +8,10 @@
     "blog": "Blog",
     "contact": "Contact Us"
   },
+  "validation": {
+    "required": "Required",
+    "email": "Invalid email"
+  },
   "support": "24/7 Support: 1-800-WAVIO",
   "order": "Order Now",
   "contact": {
@@ -26,7 +30,8 @@
     "successTitle": "Message sent",
     "errorTitle": "Submission failed",
     "formErrorTitle": "Please fix the errors",
-    "formErrorDesc": "Some fields are invalid"
+    "formErrorDesc": "Some fields are invalid",
+    "infoTitle": "Contact Information"
   },
   "careers": {
     "title": "Careers",
@@ -44,11 +49,11 @@
     "errorTitle": "Submission failed",
     "formErrorTitle": "Please fix the errors",
     "formErrorDesc": "Some fields are invalid"
-  }
-  ,"hero":{
-    "part1":"BOTTLED",
-    "part2":"WATER DELIVERY",
-    "subtitle":"Pure, fresh water delivered right to your doorstep. Experience the convenience of premium hydration with our reliable delivery service.",
+  },
+  "hero": {
+    "part1": "BOTTLED",
+    "part2": "WATER DELIVERY",
+    "subtitle": "Pure, fresh water delivered right to your doorstep. Experience the convenience of premium hydration with our reliable delivery service.",
     "readMore": "Read More"
   },
   "services": {
@@ -64,18 +69,18 @@
     "title2": "DELIVERY SERVICE",
     "subtitle": "We offer various different types of bottled water. To drink the best water available you need an excellent and safe water company."
   },
-  "stats":{
-    "happyCustomers":"Happy Customers",
-    "deliveryService":"Delivery Service",
-    "pureWater":"Pure Water"
+  "stats": {
+    "happyCustomers": "Happy Customers",
+    "deliveryService": "Delivery Service",
+    "pureWater": "Pure Water"
   },
-  "about":{
-    "composition":"WATER",
-    "compositionHighlight":"COMPOSITION",
-    "description":"Our water is carefully tested and contains essential minerals for optimal health and taste.",
-    "our":"OUR",
-    "story":"STORY",
-    "storyText":"Our company was founded in 2010. When faced initially as a personal health issue to access fresh, clean drinking water. The company is world-class and lead."
+  "about": {
+    "composition": "WATER",
+    "compositionHighlight": "COMPOSITION",
+    "description": "Our water is carefully tested and contains essential minerals for optimal health and taste.",
+    "our": "OUR",
+    "story": "STORY",
+    "storyText": "Our company was founded in 2010. When faced initially as a personal health issue to access fresh, clean drinking water. The company is world-class and lead."
   },
   "footer": {
     "downloadApp": "Stay Hydrated",
@@ -97,5 +102,3 @@
     "copyright": "All rights reserved © Nova 2024"
   }
 }
-
-

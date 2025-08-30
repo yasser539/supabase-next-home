@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useNavigate } from "react-router-dom"
 import { toast } from "@/hooks/use-toast"
+import deliveryServiceImg from "@/assets/delivery-service.jpg"
 
 const Contact = () => {
   const { t } = useTranslation()
@@ -108,7 +109,13 @@ const Contact = () => {
           <h2 className="text-xl font-semibold mb-2">{t('contact.infoTitle', 'Contact Information')}</h2>
           <p className="text-muted-foreground">{t('support')}</p>
           <div className="mt-6">
-            <img src="/src/assets/delivery-service.jpg" alt="contact" className="w-full rounded-lg shadow-sm" />
+            <img 
+              src={deliveryServiceImg} 
+              alt="Professional water delivery service contact" 
+              className="w-full rounded-lg shadow-sm"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </div>

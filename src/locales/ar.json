@@ -8,6 +8,10 @@
     "blog": "المدونة",
     "contact": "اتصل بنا"
   },
+  "validation": {
+    "required": "مطلوب",
+    "email": "بريد إلكتروني غير صالح"
+  },
   "support": "دعم 24/7: 1-800-WAVIO",
   "order": "اطلب الآن",
   "contact": {
@@ -21,12 +25,13 @@
     "email": "البريد الإلكتروني",
     "note": "ملاحظة",
     "submit": "إرسال",
-    "submitted": "تم إرسال رسالتك"
-    ,"sending":"جارٍ الإرسال...",
-    "successTitle":"تم الإرسال",
-    "errorTitle":"فشل الإرسال",
-    "formErrorTitle":"الرجاء تصحيح الأخطاء",
-    "formErrorDesc":"بعض الحقول غير صالحة"
+    "submitted": "تم إرسال رسالتك",
+    "sending": "جارٍ الإرسال...",
+    "successTitle": "تم الإرسال",
+    "errorTitle": "فشل الإرسال",
+    "formErrorTitle": "الرجاء تصحيح الأخطاء",
+    "formErrorDesc": "بعض الحقول غير صالحة",
+    "infoTitle": "معلومات الاتصال"
   },
   "careers": {
     "title": "التوظيف",
@@ -39,9 +44,13 @@
     "nationality": "الجنسية",
     "uploadLabel": "ارفع سيرتك (PDF أو صورة)",
     "submit": "قدم",
-    "submitted": "تم إرسال طلبك"
-  }
-  ,"hero":{
+    "submitted": "تم إرسال طلبك",
+    "formErrorTitle": "الرجاء تصحيح الأخطاء",
+    "formErrorDesc": "بعض الحقول غير صالحة",
+    "successTitle": "تم الإرسال",
+    "errorTitle": "فشل الإرسال"
+  },
+  "hero": {
     "part1":"زجاجات",
     "part2":"توصيل المياه",
     "subtitle":"مياه نقية وطازجة تصل إلى باب منزلك. اختبر سهولة الترطيب المميز مع خدمة التوصيل الموثوقة."
