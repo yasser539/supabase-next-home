@@ -6,12 +6,17 @@ import DeliveryInfo from "@/components/DeliveryInfo"
 const Index = () => {
   return (
     <div className="min-h-screen">
-      
       <main>
         <Hero />
-        <Services />
-        <About />
-        <DeliveryInfo />
+        <section id="services">
+          <Services />
+        </section>
+        <section id="about">
+          <About />
+        </section>
+        <section id="delivery">
+          <DeliveryInfo />
+        </section>
       </main>
     </div>
   );
