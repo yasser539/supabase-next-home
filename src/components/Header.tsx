@@ -61,9 +61,6 @@ const Header = () => {
             <Link to="/products" className="px-4 py-2 text-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-all duration-200">
               {t('nav.products')}
             </Link>
-            <Link to="/#services" className="px-4 py-2 text-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-all duration-200">
-              {t('nav.services')}
-            </Link>
             <Link to="/blog" className="px-4 py-2 text-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-all duration-200">
               {t('nav.blog')}
             </Link>
@@ -126,13 +123,6 @@ const Header = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('nav.products')}
-              </Link>
-              <Link 
-                to="/#services" 
-                className="block px-4 py-2 text-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-all duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {t('nav.services')}
               </Link>
               <Link 
                 to="/blog" 
