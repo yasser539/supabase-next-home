@@ -56,6 +56,36 @@
     "subtitle": "Pure, fresh water delivered right to your doorstep. Experience the convenience of premium hydration with our reliable delivery service.",
     "readMore": "Read More"
   },
+  "slider": {
+    "lifestyle": {
+      "title": "Healthy Lifestyle",
+      "subtitle": "Drink pure water and live a healthy life"
+    },
+    "product": {
+      "title": "Premium Quality Products",
+      "subtitle": "Pure water with highest quality standards"
+    },
+    "commercial": {
+      "title": "Professional Commercial Service",
+      "subtitle": "Fast and reliable delivery for businesses"
+    }
+  },
+  "brands": {
+    "title": "Our Premium Partners",
+    "subtitle": "We work with the best brands to ensure the highest quality standards for you",
+    "partners": "Certified Partners",
+    "quality": "Quality Guarantee",
+    "support": "Technical Support"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "We are a leading company in pure water delivery, serving our customers for over 15 years. We are committed to providing the highest quality standards and excellent service.",
+    "feature1": "100% Pure Water",
+    "feature2": "High Safety Standards",
+    "feature3": "Certified Quality",
+    "cta": "Order Now"
+  },
+  "learnMore": "Learn More",
   "services": {
     "fastDelivery": "Fast Delivery",
     "fastDeliveryDesc": "Same-day delivery available in most areas. Get your water when you need it most.",
