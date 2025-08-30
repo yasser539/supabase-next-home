@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Clock, Calendar, MapPin } from "lucide-react"
 import { Link } from "react-router-dom"
+import OrderModal from "./OrderModal"
 
 const DeliveryInfo = () => {
   return (
@@ -51,11 +52,11 @@ const DeliveryInfo = () => {
             </div>
 
             <div className="flex gap-4">
-              <Link to="/contact">
+              <OrderModal>
                 <Button variant="water" size="lg">
                   Order Now
                 </Button>
-              </Link>
+              </OrderModal>
               <Link to="/#about">
                 <Button variant="water-outline" size="lg">
                   Learn More
@@ -113,11 +114,11 @@ const DeliveryInfo = () => {
                 </div>
               </div>
 
-              <Link to="/contact">
+              <OrderModal>
                 <Button variant="water" className="w-full mt-8" size="lg">
                   Add to Cart
                 </Button>
-              </Link>
+              </OrderModal>
             </CardContent>
           </Card>
         </div>

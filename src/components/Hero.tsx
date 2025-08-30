@@ -3,6 +3,7 @@ import { Play, ArrowRight } from "lucide-react"
 import heroWaterBottle from "@/assets/hero-water-bottle.jpg"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
+import OrderModal from "./OrderModal"
 
 const Hero = () => {
   const { t } = useTranslation()
@@ -31,12 +32,12 @@ const Hero = () => {
 
             {/* Enhanced CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact">
+              <OrderModal>
                 <Button variant="water" size="lg" className="text-lg interactive-button group">
                   {t('order')}
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
-              </Link>
+              </OrderModal>
               
               <Link to="/#about">
                 <Button variant="water-outline" size="lg" className="text-lg interactive-button group">

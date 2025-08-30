@@ -3,6 +3,7 @@ import { Phone, ShoppingCart, Globe, Search, MapPin, Menu, X } from "lucide-reac
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import OrderModal from "./OrderModal"
 
 const Header = () => {
   const { t, i18n } = useTranslation()
@@ -75,12 +76,12 @@ const Header = () => {
               <Search className="h-4 w-4" />
             </Button>
             
-            <Link to="/contact">
+            <OrderModal>
               <Button variant="water-outline" size="sm" className="order-btn hidden sm:flex">
                 <ShoppingCart className="h-4 w-4 mr-2" />
                 {t('order')}
               </Button>
-            </Link>
+            </OrderModal>
 
             <Button variant="ghost" size="sm" onClick={toggleLanguage} aria-label="Toggle language">
               <Globe className="h-4 w-4" />
@@ -139,12 +140,12 @@ const Header = () => {
                 {t('nav.contact')}
               </Link>
               <div className="pt-2">
-                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                <OrderModal onOpen={() => setIsMobileMenuOpen(false)}>
                   <Button variant="water-outline" size="sm" className="w-full">
                     <ShoppingCart className="h-4 w-4 mr-2" />
                     {t('order')}
                   </Button>
-                </Link>
+                </OrderModal>
               </div>
             </nav>
           </div>
