@@ -42,6 +42,8 @@ const About = () => {
               src={deliveryService}
               alt="Professional water delivery service"
               className="w-full rounded-lg shadow-soft"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

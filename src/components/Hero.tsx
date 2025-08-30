@@ -65,6 +65,8 @@ const Hero = () => {
                 src={heroWaterBottle}
                 alt="Premium water bottles for delivery service"
                 className="w-full max-w-md mx-auto drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"
+                loading="eager"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
