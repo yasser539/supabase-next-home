@@ -48,7 +48,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="service-card"
+              className="service-card group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative mb-6">

@@ -189,7 +189,7 @@
   }
 
   .service-card {
-    @apply modern-card interactive-card p-8 text-center group;
+    @apply modern-card interactive-card p-8 text-center;
   }
 
   .feature-card {
