@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Card, CardContent } from "@/components/ui/card"
 import { ShoppingCart, Package, MapPin, Phone, User, Calendar } from "lucide-react"
 import { useTranslation } from "react-i18next"
@@ -89,6 +89,9 @@ const OrderModal = ({ children, onOpen }: OrderModalProps) => {
             <ShoppingCart className="h-6 w-6 inline-block mr-2" />
             اطلب الآن - طلب توصيل المياه
           </DialogTitle>
+          <DialogDescription className="text-center text-muted-foreground">
+            املأ النموذج أدناه لطلب خدمة توصيل المياه إلى منزلك أو مكتبك
+          </DialogDescription>
         </DialogHeader>
 
         <div className="grid lg:grid-cols-2 gap-6">
