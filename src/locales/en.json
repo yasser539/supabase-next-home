@@ -62,6 +62,25 @@
     "our":"OUR",
     "story":"STORY",
     "storyText":"Our company was founded in 2010. When faced initially as a personal health issue to access fresh, clean drinking water. The company is world-class and lead."
+  },
+  "footer": {
+    "downloadApp": "Stay Hydrated",
+    "downloadDescription": "Download Nova Water app and order now",
+    "contact": "Contact Us",
+    "address": "Al Tahlia Street, Riyadh",
+    "addressDetails": "Kingdom of Saudi Arabia, 13249",
+    "helpCenter": "Help Center",
+    "commonQuestions": "Common Questions",
+    "termsConditions": "Terms & Conditions",
+    "services": "Services",
+    "basicGroup": "Basic Group",
+    "sportWater": "Nova Sport Water",
+    "luxuryGroup": "Nova Luxury Water Group",
+    "bigGroup": "Big Group",
+    "aboutUs": "About Nova",
+    "aboutInfo": "About Us",
+    "news": "News",
+    "copyright": "All rights reserved © Nova 2024"
   }
 }
 
