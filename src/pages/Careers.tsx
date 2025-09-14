@@ -1,16 +1,127 @@
 import { useTranslation } from "react-i18next"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast } from "@/hooks/use-toast"
+import { 
+  Users, 
+  Heart, 
+  Trophy, 
+  GraduationCap, 
+  Clock, 
+  MapPin, 
+  DollarSign,
+  Briefcase,
+  Mail,
+  Phone,
+  User,
+  Upload,
+  Star,
+  Award,
+  Coffee,
+  Car
+} from "lucide-react"
 
 const Careers = () => {
   const { t } = useTranslation()
-  const [form, setForm] = useState({ firstName: '', lastName: '', phone: '', email: '', specialty: '', nationality: '' })
+  const [form, setForm] = useState({ 
+    firstName: '', 
+    lastName: '', 
+    phone: '', 
+    email: '', 
+    specialty: '', 
+    nationality: '',
+    experience: '',
+    position: '',
+    coverLetter: ''
+  })
   const [file, setFile] = useState<File | null>(null)
   const [errors, setErrors] = useState<{ [k: string]: string }>({})
   const [submitting, setSubmitting] = useState(false)
+
+  const jobPositions = [
+    {
+      id: 1,
+      title: "مدير توصيل المياه",
+      department: "العمليات",
+      type: "دوام كامل",
+      location: "الرياض",
+      salary: "8,000 - 12,000 ريال",
+      requirements: ["خبرة 3-5 سنوات في الإدارة", "رخصة قيادة", "مهارات قيادية"],
+      description: "إدارة عمليات التوصيل وفريق السائقين لضمان الخدمة المميزة للعملاء",
+      urgent: true
+    },
+    {
+      id: 2,
+      title: "أخصائي جودة المياه",
+      department: "الجودة",
+      type: "دوام كامل", 
+      location: "الرياض",
+      salary: "6,000 - 9,000 ريال",
+      requirements: ["درجة البكالوريوس في الكيمياء", "خبرة في مختبرات", "شهادات جودة"],
+      description: "فحص وضمان جودة المياه وفقاً للمعايير الدولية والمحلية",
+      urgent: false
+    },
+    {
+      id: 3,
+      title: "مطور تطبيقات موبايل",
+      department: "التكنولوجيا",
+      type: "دوام كامل",
+      location: "الرياض / عن بُعد",
+      salary: "10,000 - 15,000 ريال", 
+      requirements: ["خبرة في React Native", "Flutter", "خبرة 2+ سنوات"],
+      description: "تطوير وتحسين تطبيق توصيل المياه للهواتف الذكية",
+      urgent: false
+    },
+    {
+      id: 4,
+      title: "أخصائي خدمة عملاء",
+      department: "خدمة العملاء",
+      type: "دوام جزئي",
+      location: "الرياض",
+      salary: "4,000 - 6,000 ريال",
+      requirements: ["مهارات تواصل ممتازة", "إجادة العربية والإنجليزية", "صبر وود"],
+      description: "التعامل مع استفسارات العملاء وحل المشاكل بطريقة مهنية ومتميزة",
+      urgent: false
+    }
+  ]
+
+  const benefits = [
+    {
+      icon: <DollarSign className="h-6 w-6 text-primary" />,
+      title: "راتب تنافسي",
+      description: "رواتب تتماشى مع السوق مع علاوات سنوية وحوافز أداء"
+    },
+    {
+      icon: <Heart className="h-6 w-6 text-primary" />,
+      title: "تأمين صحي شامل", 
+      description: "تأمين طبي شامل للموظف والعائلة مع أفضل المستشفيات"
+    },
+    {
+      icon: <Clock className="h-6 w-6 text-primary" />,
+      title: "مرونة في العمل",
+      description: "ساعات عمل مرنة وإمكانية العمل عن بُعد حسب طبيعة الوظيفة"
+    },
+    {
+      icon: <GraduationCap className="h-6 w-6 text-primary" />,
+      title: "التطوير المهني",
+      description: "برامج تدريب مستمرة ودعم للحصول على الشهادات المهنية"
+    },
+    {
+      icon: <Coffee className="h-6 w-6 text-primary" />,
+      title: "بيئة عمل محفزة",
+      description: "مكاتب عصرية مع مساحات استراحة ووجبات مجانية"
+    },
+    {
+      icon: <Car className="h-6 w-6 text-primary" />,
+      title: "بدل مواصلات",
+      description: "بدل مواصلات شهري أو توفير سيارة شركة حسب الوظيفة"
+    }
+  ]
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -18,19 +129,28 @@ const Careers = () => {
     if (errors[name]) setErrors({ ...errors, [name]: '' })
   }
 
+  const handleSelectChange = (field: string, value: string) => {
+    setForm({ ...form, [field]: value })
+    if (errors[field]) setErrors({ ...errors, [field]: '' })
+  }
+
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files && e.target.files[0]
-    if (f) setFile(f)
+    if (f) {
+      setFile(f)
+      if (errors.file) setErrors({ ...errors, file: '' })
+    }
   }
 
   const validate = () => {
     const next: { [k: string]: string } = {}
-    if (!form.firstName.trim()) next.firstName = t('validation.required', 'Required')
-    if (!form.lastName.trim()) next.lastName = t('validation.required', 'Required')
-    if (!form.email.trim()) next.email = t('validation.required', 'Required')
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = t('validation.email', 'Invalid email')
-    if (!form.phone.trim()) next.phone = t('validation.required', 'Required')
-    if (!file) next.file = t('validation.required', 'Required')
+    if (!form.firstName.trim()) next.firstName = t('validation.required', 'مطلوب')
+    if (!form.lastName.trim()) next.lastName = t('validation.required', 'مطلوب')
+    if (!form.email.trim()) next.email = t('validation.required', 'مطلوب')
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = t('validation.email', 'بريد إلكتروني غير صالح')
+    if (!form.phone.trim()) next.phone = t('validation.required', 'مطلوب')
+    if (!form.position.trim()) next.position = 'يرجى اختيار الوظيفة'
+    if (!file) next.file = 'يرجى رفع السيرة الذاتية'
     return next
   }
 
@@ -39,58 +159,360 @@ const Careers = () => {
     const next = validate()
     if (Object.keys(next).length) {
       setErrors(next)
-      toast({ title: t('careers.formErrorTitle', 'Please fix the errors'), description: t('careers.formErrorDesc', 'Some fields are invalid') })
+      toast({ 
+        title: "خطأ في النموذج", 
+        description: "يرجى تصحيح الأخطاء المذكورة", 
+        variant: "destructive" 
+      })
       return
     }
 
     setSubmitting(true)
     try {
       // TODO: upload file to storage (Supabase) and save record
-      await new Promise((r) => setTimeout(r, 700))
-      toast({ title: t('careers.successTitle', 'Application sent'), description: t('careers.submitted') })
-      setForm({ firstName: '', lastName: '', phone: '', email: '', specialty: '', nationality: '' })
+      await new Promise((r) => setTimeout(r, 1000))
+      toast({ 
+        title: "تم إرسال طلبك بنجاح!", 
+        description: "سنتواصل معك خلال 3 أيام عمل لمراجعة طلبك" 
+      })
+      setForm({ 
+        firstName: '', 
+        lastName: '', 
+        phone: '', 
+        email: '', 
+        specialty: '', 
+        nationality: '',
+        experience: '',
+        position: '',
+        coverLetter: ''
+      })
       setFile(null)
     } catch (err) {
-      toast({ title: t('careers.errorTitle', 'Submission failed'), description: String(err) })
+      toast({ 
+        title: "فشل في الإرسال", 
+        description: "يرجى المحاولة مرة أخرى", 
+        variant: "destructive" 
+      })
     } finally {
       setSubmitting(false)
     }
   }
 
   return (
-    <main className="min-h-screen container mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">{t('careers.title')}</h1>
-      <p className="text-muted-foreground mb-6">{t('careers.description')}</p>
+    <main className="min-h-screen">
+      {/* Header Section */}
+      <section className="bg-gradient-to-br from-background to-accent/20 py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 heading-gradient">
+            {t('careers.title', 'انضم لفريقنا')}
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+            {t('careers.description', 'كن جزءاً من فريق رائد في مجال توصيل المياه وساهم في بناء مستقبل أفضل للجميع')}
+          </p>
+          <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <Users className="h-4 w-4 text-primary" />
+              <span>فريق متنوع ومحترف</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Trophy className="h-4 w-4 text-primary" />
+              <span>بيئة عمل محفزة</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Heart className="h-4 w-4 text-primary" />
+              <span>مميزات استثنائية</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <Card>
-        <CardContent className="p-6">
-          <form onSubmit={handleSubmit} className="space-y-4 max-w-lg">
-            <div className="flex flex-col md:flex-row md:space-x-4">
-              <Input name="firstName" placeholder={t('careers.firstName') as string} value={form.firstName} onChange={handleChange} />
-              <Input name="lastName" placeholder={t('careers.lastName') as string} value={form.lastName} onChange={handleChange} />
+      {/* Available Positions */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">الوظائف المتاحة</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              اكتشف الفرص الوظيفية المتاحة واختر ما يناسب مهاراتك وطموحاتك المهنية
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            {jobPositions.map((job) => (
+              <Card key={job.id} className="group hover:shadow-lg transition-all duration-300 border-0 bg-gradient-to-br from-white via-white to-primary/5">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <CardTitle className="text-xl group-hover:text-primary transition-colors">{job.title}</CardTitle>
+                        {job.urgent && (
+                          <Badge className="bg-red-100 text-red-700 border-red-200">عاجل</Badge>
+                        )}
+                      </div>
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-1">
+                          <Briefcase className="h-4 w-4" />
+                          <span>{job.department}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="h-4 w-4" />
+                          <span>{job.type}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <MapPin className="h-4 w-4" />
+                          <span>{job.location}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-lg font-bold text-primary">{job.salary}</div>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-4">{job.description}</p>
+                  <div className="mb-4">
+                    <h4 className="font-semibold mb-2 text-sm">المتطلبات:</h4>
+                    <div className="flex flex-wrap gap-1">
+                      {job.requirements.map((req, index) => (
+                        <Badge key={index} variant="secondary" className="text-xs">
+                          {req}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                  <Button 
+                    onClick={() => handleSelectChange('position', job.title)}
+                    className="w-full group-hover:shadow-md transition-shadow"
+                  >
+                    تقدم للوظيفة
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-20 bg-accent/5">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">لماذا تنضم لنا؟</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              نقدم بيئة عمل استثنائية مع مميزات وفوائد تساعدك على النمو المهني والشخصي
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="text-center group hover:shadow-lg transition-all duration-300 p-6 rounded-2xl bg-white">
+                <div className="mb-4 group-hover:scale-110 transition-transform">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
+                <p className="text-muted-foreground">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Application Form */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">تقدم بطلبك الآن</h2>
+              <p className="text-muted-foreground">
+                املأ النموذج أدناه وارفع سيرتك الذاتية للتقدم لأي من الوظائف المتاحة
+              </p>
             </div>
 
-            <Input name="phone" placeholder={t('careers.phone') as string} value={form.phone} onChange={handleChange} />
-            <Input name="email" placeholder={t('careers.email') as string} value={form.email} onChange={handleChange} />
+            <Card className="border-0 shadow-xl">
+              <CardContent className="p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                        <User className="h-4 w-4" />
+                        الاسم الأول *
+                      </label>
+                      <Input
+                        name="firstName"
+                        placeholder="أدخل اسمك الأول"
+                        value={form.firstName}
+                        onChange={handleChange}
+                        className={errors.firstName ? "border-red-500" : ""}
+                      />
+                      {errors.firstName && <div className="text-red-500 text-sm mt-1">{errors.firstName}</div>}
+                    </div>
 
-            <div className="flex flex-col md:flex-row md:space-x-4">
-              <Input name="specialty" placeholder={t('careers.specialty') as string} value={form.specialty} onChange={handleChange} />
-              <Input name="nationality" placeholder={t('careers.nationality') as string} value={form.nationality} onChange={handleChange} />
-            </div>
+                    <div>
+                      <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                        <User className="h-4 w-4" />
+                        اسم العائلة *
+                      </label>
+                      <Input
+                        name="lastName"
+                        placeholder="أدخل اسم العائلة"
+                        value={form.lastName}
+                        onChange={handleChange}
+                        className={errors.lastName ? "border-red-500" : ""}
+                      />
+                      {errors.lastName && <div className="text-red-500 text-sm mt-1">{errors.lastName}</div>}
+                    </div>
+                  </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">{t('careers.uploadLabel')}</label>
-              <input type="file" accept=".pdf,image/*" onChange={handleFile} />
-              {errors.file && <div className="text-destructive text-sm mt-1">{errors.file}</div>}
-              {file && <div className="text-sm text-muted-foreground mt-2">{file.name}</div>}
-            </div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                        <Phone className="h-4 w-4" />
+                        رقم الهاتف *
+                      </label>
+                      <Input
+                        name="phone"
+                        placeholder="مثال: +966501234567"
+                        value={form.phone}
+                        onChange={handleChange}
+                        className={errors.phone ? "border-red-500" : ""}
+                      />
+                      {errors.phone && <div className="text-red-500 text-sm mt-1">{errors.phone}</div>}
+                    </div>
 
-            <div>
-              <Button type="submit" variant="water">{t('careers.submit')}</Button>
-            </div>
-          </form>
-        </CardContent>
-      </Card>
+                    <div>
+                      <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                        <Mail className="h-4 w-4" />
+                        البريد الإلكتروني *
+                      </label>
+                      <Input
+                        name="email"
+                        type="email"
+                        placeholder="example@email.com"
+                        value={form.email}
+                        onChange={handleChange}
+                        className={errors.email ? "border-red-500" : ""}
+                      />
+                      {errors.email && <div className="text-red-500 text-sm mt-1">{errors.email}</div>}
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                        <Briefcase className="h-4 w-4" />
+                        الوظيفة المطلوبة *
+                      </label>
+                      <Select value={form.position} onValueChange={(value) => handleSelectChange('position', value)}>
+                        <SelectTrigger className={errors.position ? "border-red-500" : ""}>
+                          <SelectValue placeholder="اختر الوظيفة" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {jobPositions.map((job) => (
+                            <SelectItem key={job.id} value={job.title}>
+                              {job.title} - {job.department}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      {errors.position && <div className="text-red-500 text-sm mt-1">{errors.position}</div>}
+                    </div>
+
+                    <div>
+                      <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                        <Award className="h-4 w-4" />
+                        سنوات الخبرة
+                      </label>
+                      <Select value={form.experience} onValueChange={(value) => handleSelectChange('experience', value)}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="اختر سنوات الخبرة" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="fresh">خريج جديد</SelectItem>
+                          <SelectItem value="1-2">1-2 سنوات</SelectItem>
+                          <SelectItem value="3-5">3-5 سنوات</SelectItem>
+                          <SelectItem value="5-10">5-10 سنوات</SelectItem>
+                          <SelectItem value="10+">أكثر من 10 سنوات</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">التخصص</label>
+                      <Input
+                        name="specialty"
+                        placeholder="مثال: هندسة، إدارة أعمال، كيمياء"
+                        value={form.specialty}
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">الجنسية</label>
+                      <Input
+                        name="nationality"
+                        placeholder="مثال: سعودي، مصري، أردني"
+                        value={form.nationality}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">رسالة تعريفية</label>
+                    <Textarea
+                      name="coverLetter"
+                      placeholder="اكتب رسالة قصيرة عن نفسك ولماذا تريد العمل معنا (اختياري)"
+                      value={form.coverLetter}
+                      onChange={handleChange}
+                      rows={4}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                      <Upload className="h-4 w-4" />
+                      السيرة الذاتية *
+                    </label>
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition-colors">
+                      <input
+                        type="file"
+                        accept=".pdf,.doc,.docx,image/*"
+                        onChange={handleFile}
+                        className="hidden"
+                        id="cv-upload"
+                      />
+                      <label htmlFor="cv-upload" className="cursor-pointer">
+                        <Upload className="h-8 w-8 text-gray-400 mx-auto mb-2" />
+                        <p className="text-sm text-muted-foreground">
+                          اسحب السيرة الذاتية هنا أو اضغط للاختيار
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          PDF, DOC, DOCX أو صورة (أقصى حجم 10MB)
+                        </p>
+                      </label>
+                    </div>
+                    {errors.file && <div className="text-red-500 text-sm mt-1">{errors.file}</div>}
+                    {file && (
+                      <div className="mt-2 p-3 bg-green-50 rounded-lg flex items-center gap-2">
+                        <Star className="h-4 w-4 text-green-600" />
+                        <span className="text-sm text-green-700">{file.name}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="pt-4">
+                    <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+                      {submitting ? "جاري الإرسال..." : "إرسال الطلب"}
+                    </Button>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }
