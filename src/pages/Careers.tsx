@@ -258,46 +258,6 @@ const Careers = () => {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="flex items-center gap-2 text-sm font-medium mb-2">
-                        <Briefcase className="h-4 w-4" />
-                        الوظيفة المطلوبة *
-                      </label>
-                      <Select value={form.position} onValueChange={(value) => handleSelectChange('position', value)}>
-                        <SelectTrigger className={errors.position ? "border-red-500" : ""}>
-                          <SelectValue placeholder="اختر الوظيفة" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="مدير توصيل المياه">مدير توصيل المياه - العمليات</SelectItem>
-                          <SelectItem value="أخصائي جودة المياه">أخصائي جودة المياه - الجودة</SelectItem>
-                          <SelectItem value="مطور تطبيقات موبايل">مطور تطبيقات موبايل - التكنولوجيا</SelectItem>
-                          <SelectItem value="أخصائي خدمة عملاء">أخصائي خدمة عملاء - خدمة العملاء</SelectItem>
-                          <SelectItem value="أخرى">وظيفة أخرى</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      {errors.position && <div className="text-red-500 text-sm mt-1">{errors.position}</div>}
-                    </div>
-
-                    <div>
-                      <label className="flex items-center gap-2 text-sm font-medium mb-2">
-                        <Award className="h-4 w-4" />
-                        سنوات الخبرة
-                      </label>
-                      <Select value={form.experience} onValueChange={(value) => handleSelectChange('experience', value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="اختر سنوات الخبرة" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="fresh">خريج جديد</SelectItem>
-                          <SelectItem value="1-2">1-2 سنوات</SelectItem>
-                          <SelectItem value="3-5">3-5 سنوات</SelectItem>
-                          <SelectItem value="5-10">5-10 سنوات</SelectItem>
-                          <SelectItem value="10+">أكثر من 10 سنوات</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
