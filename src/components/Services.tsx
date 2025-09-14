@@ -35,7 +35,7 @@ const Services = () => {
           <div className="inline-block">
             <span className="inline-block w-12 h-1 bg-gradient-water rounded-full mb-4"></span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold font-poppins">
+          <h2 className="text-4xl lg:text-5xl font-bold font-heading">
             {t('services.title1', 'PURE WATER')}{" "}
             <span className="heading-gradient">{t('services.title2', 'DELIVERY SERVICE')}</span>
           </h2>
@@ -58,7 +58,7 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-water rounded-2xl blur-md opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
               </div>
               
-              <h3 className="text-xl font-semibold font-poppins mb-4 group-hover:text-primary transition-colors">
+              <h3 className="text-xl font-semibold font-heading mb-4 group-hover:text-primary transition-colors">
                 {service.title}
               </h3>
               

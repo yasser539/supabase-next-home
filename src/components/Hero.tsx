@@ -50,15 +50,15 @@ const Hero = () => {
             {/* Enhanced Stats */}
             <div className="flex gap-8 pt-8">
               <div className="text-center group">
-                <div className="text-4xl font-bold text-primary mb-2 font-poppins group-hover:scale-110 transition-transform">500+</div>
+                <div className="text-4xl font-bold text-primary mb-2 font-heading group-hover:scale-110 transition-transform">500+</div>
                 <div className="text-sm text-muted-foreground font-medium">{t('stats.happyCustomers', 'Happy Customers')}</div>
               </div>
               <div className="text-center group">
-                <div className="text-4xl font-bold text-primary mb-2 font-poppins group-hover:scale-110 transition-transform">24/7</div>
+                <div className="text-4xl font-bold text-primary mb-2 font-heading group-hover:scale-110 transition-transform">24/7</div>
                 <div className="text-sm text-muted-foreground font-medium">{t('stats.deliveryService', 'Delivery Service')}</div>
               </div>
               <div className="text-center group">
-                <div className="text-4xl font-bold text-primary mb-2 font-poppins group-hover:scale-110 transition-transform">100%</div>
+                <div className="text-4xl font-bold text-primary mb-2 font-heading group-hover:scale-110 transition-transform">100%</div>
                 <div className="text-sm text-muted-foreground font-medium">{t('stats.pureWater', 'Pure Water')}</div>
               </div>
             </div>
