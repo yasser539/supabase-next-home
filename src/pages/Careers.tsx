@@ -13,7 +13,6 @@ import {
   Trophy, 
   GraduationCap, 
   Clock, 
-  MapPin, 
   DollarSign,
   Briefcase,
   Mail,
@@ -42,53 +41,6 @@ const Careers = () => {
   const [file, setFile] = useState<File | null>(null)
   const [errors, setErrors] = useState<{ [k: string]: string }>({})
   const [submitting, setSubmitting] = useState(false)
-
-  const jobPositions = [
-    {
-      id: 1,
-      title: "مدير توصيل المياه",
-      department: "العمليات",
-      type: "دوام كامل",
-      location: "الرياض",
-      salary: "8,000 - 12,000 ريال",
-      requirements: ["خبرة 3-5 سنوات في الإدارة", "رخصة قيادة", "مهارات قيادية"],
-      description: "إدارة عمليات التوصيل وفريق السائقين لضمان الخدمة المميزة للعملاء",
-      urgent: true
-    },
-    {
-      id: 2,
-      title: "أخصائي جودة المياه",
-      department: "الجودة",
-      type: "دوام كامل", 
-      location: "الرياض",
-      salary: "6,000 - 9,000 ريال",
-      requirements: ["درجة البكالوريوس في الكيمياء", "خبرة في مختبرات", "شهادات جودة"],
-      description: "فحص وضمان جودة المياه وفقاً للمعايير الدولية والمحلية",
-      urgent: false
-    },
-    {
-      id: 3,
-      title: "مطور تطبيقات موبايل",
-      department: "التكنولوجيا",
-      type: "دوام كامل",
-      location: "الرياض / عن بُعد",
-      salary: "10,000 - 15,000 ريال", 
-      requirements: ["خبرة في React Native", "Flutter", "خبرة 2+ سنوات"],
-      description: "تطوير وتحسين تطبيق توصيل المياه للهواتف الذكية",
-      urgent: false
-    },
-    {
-      id: 4,
-      title: "أخصائي خدمة عملاء",
-      department: "خدمة العملاء",
-      type: "دوام جزئي",
-      location: "الرياض",
-      salary: "4,000 - 6,000 ريال",
-      requirements: ["مهارات تواصل ممتازة", "إجادة العربية والإنجليزية", "صبر وود"],
-      description: "التعامل مع استفسارات العملاء وحل المشاكل بطريقة مهنية ومتميزة",
-      urgent: false
-    }
-  ]
 
   const benefits = [
     {
@@ -226,73 +178,6 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Available Positions */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">الوظائف المتاحة</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              اكتشف الفرص الوظيفية المتاحة واختر ما يناسب مهاراتك وطموحاتك المهنية
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            {jobPositions.map((job) => (
-              <Card key={job.id} className="group hover:shadow-lg transition-all duration-300 border-0 bg-gradient-to-br from-white via-white to-primary/5">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <CardTitle className="text-xl group-hover:text-primary transition-colors">{job.title}</CardTitle>
-                        {job.urgent && (
-                          <Badge className="bg-red-100 text-red-700 border-red-200">عاجل</Badge>
-                        )}
-                      </div>
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-1">
-                          <Briefcase className="h-4 w-4" />
-                          <span>{job.department}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-4 w-4" />
-                          <span>{job.type}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <MapPin className="h-4 w-4" />
-                          <span>{job.location}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-lg font-bold text-primary">{job.salary}</div>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4">{job.description}</p>
-                  <div className="mb-4">
-                    <h4 className="font-semibold mb-2 text-sm">المتطلبات:</h4>
-                    <div className="flex flex-wrap gap-1">
-                      {job.requirements.map((req, index) => (
-                        <Badge key={index} variant="secondary" className="text-xs">
-                          {req}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                  <Button 
-                    onClick={() => handleSelectChange('position', job.title)}
-                    className="w-full group-hover:shadow-md transition-shadow"
-                  >
-                    تقدم للوظيفة
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Benefits Section */}
       <section className="py-20 bg-accent/5">
         <div className="container mx-auto px-4">
@@ -407,11 +292,11 @@ const Careers = () => {
                           <SelectValue placeholder="اختر الوظيفة" />
                         </SelectTrigger>
                         <SelectContent>
-                          {jobPositions.map((job) => (
-                            <SelectItem key={job.id} value={job.title}>
-                              {job.title} - {job.department}
-                            </SelectItem>
-                          ))}
+                          <SelectItem value="مدير توصيل المياه">مدير توصيل المياه - العمليات</SelectItem>
+                          <SelectItem value="أخصائي جودة المياه">أخصائي جودة المياه - الجودة</SelectItem>
+                          <SelectItem value="مطور تطبيقات موبايل">مطور تطبيقات موبايل - التكنولوجيا</SelectItem>
+                          <SelectItem value="أخصائي خدمة عملاء">أخصائي خدمة عملاء - خدمة العملاء</SelectItem>
+                          <SelectItem value="أخرى">وظيفة أخرى</SelectItem>
                         </SelectContent>
                       </Select>
                       {errors.position && <div className="text-red-500 text-sm mt-1">{errors.position}</div>}
