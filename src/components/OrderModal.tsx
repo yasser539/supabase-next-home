@@ -171,35 +171,6 @@ const OrderModal = ({ children, onOpen }: OrderModalProps) => {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="deliveryDate" className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4" />
-                      تاريخ التوصيل المفضل
-                    </Label>
-                    <Input
-                      id="deliveryDate"
-                      type="date"
-                      value={formData.deliveryDate}
-                      onChange={(e) => handleInputChange("deliveryDate", e.target.value)}
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="frequency">تكرار التوصيل</Label>
-                    <Select value={formData.deliveryFrequency} onValueChange={(value) => handleInputChange("deliveryFrequency", value)}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="اختر التكرار" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="once">طلب واحد</SelectItem>
-                        <SelectItem value="weekly">أسبوعياً</SelectItem>
-                        <SelectItem value="biweekly">كل أسبوعين</SelectItem>
-                        <SelectItem value="monthly">شهرياً</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
 
                 <div>
                   <Label htmlFor="notes">ملاحظات إضافية</Label>
