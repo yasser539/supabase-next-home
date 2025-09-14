@@ -76,6 +76,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "glass-blue": "hsl(var(--glass-blue))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -101,6 +102,7 @@ export default {
         "gradient-warm": "var(--gradient-warm)",
         "gradient-cool": "var(--gradient-cool)",
         "gradient-hero": "var(--gradient-hero)",
+        "gradient-water": "var(--gradient-water)",
       },
       boxShadow: {
         soft: "var(--shadow-soft)",
@@ -108,6 +110,7 @@ export default {
         large: "var(--shadow-large)",
         glow: "var(--shadow-glow)",
         colored: "var(--shadow-colored)",
+        glass: "var(--shadow-glass)",
       },
       borderRadius: {
         lg: "var(--radius)",

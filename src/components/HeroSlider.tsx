@@ -71,7 +71,7 @@ const HeroSlider = () => {
               <img
                 src={slide.image}
                 alt={t(slide.titleKey)}
-                className="w-full h-full object-cover transition-transform duration-[10000ms]"
+                className="w-full h-full object-cover transition-transform [transition-duration:10000ms]"
                 style={{
                   transform: index === currentSlide ? 'scale(1.1)' : 'scale(1.0)'
                 }}
