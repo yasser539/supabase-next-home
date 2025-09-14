@@ -124,7 +124,7 @@
   }
   
   .feature-card {
-    @apply group relative overflow-hidden rounded-2xl bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-colored;
+    @apply relative overflow-hidden rounded-2xl bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-colored;
     border: 1px solid hsl(var(--border));
   }
 }
