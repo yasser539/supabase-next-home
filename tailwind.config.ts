@@ -100,9 +100,7 @@ export default {
         "gradient-secondary": "var(--gradient-secondary)", 
         "gradient-accent": "var(--gradient-accent)",
         "gradient-warm": "var(--gradient-warm)",
-        "gradient-cool": "var(--gradient-cool)",
         "gradient-hero": "var(--gradient-hero)",
-        "gradient-water": "var(--gradient-water)",
       },
       boxShadow: {
         soft: "var(--shadow-soft)",
@@ -110,7 +108,6 @@ export default {
         large: "var(--shadow-large)",
         glow: "var(--shadow-glow)",
         colored: "var(--shadow-colored)",
-        glass: "var(--shadow-glass)",
       },
       borderRadius: {
         lg: "var(--radius)",
