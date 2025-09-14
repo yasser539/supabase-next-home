@@ -74,11 +74,8 @@ const OrderModal = ({ children, onOpen }: OrderModalProps) => {
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center flex items-center justify-center gap-2">
             <ShoppingCart className="h-6 w-6 text-primary" />
-            اطلب الآن - طلب توصيل المياه
+            اطلب الآن
           </DialogTitle>
-          <DialogDescription className="text-center text-muted-foreground">
-            املأ النموذج أدناه لطلب خدمة توصيل المياه إلى منزلك أو مكتبك
-          </DialogDescription>
         </DialogHeader>
 
         <div className="max-w-2xl mx-auto">
