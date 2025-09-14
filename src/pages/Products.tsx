@@ -117,22 +117,6 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-16 bg-accent/5">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="text-center group hover:shadow-lg transition-all duration-300 p-6 rounded-2xl bg-white">
-                <div className="mb-4 group-hover:scale-110 transition-transform">
-                  {benefit.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                <p className="text-muted-foreground">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Products Grid */}
       <section className="py-20">
