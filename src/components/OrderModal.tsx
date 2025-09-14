@@ -30,9 +30,37 @@ const OrderModal = ({ children, onOpen }: OrderModalProps) => {
   })
 
   const packages = [
-    { id: "single", name: "5-Gallon Jug", price: 12.99, description: "Perfect for small families" },
-    { id: "triple", name: "3-Bottle Package", price: 33.99, description: "Most popular choice", discount: "Save $5.98" },
-    { id: "family", name: "5-Bottle Package", price: 52.99, description: "Best value for large families", discount: "Save $12.96" }
+    { 
+      id: "single", 
+      name: "جالون واحد 5 لتر", 
+      price: 15.99, 
+      originalPrice: 19.99,
+      description: "مثالي للعائلات الصغيرة", 
+      features: ["مياه نقية 100%", "تسليم سريع", "ضمان الجودة"],
+      emoji: "💧"
+    },
+    { 
+      id: "triple", 
+      name: "باقة 3 جالونات", 
+      price: 42.99, 
+      originalPrice: 59.99,
+      description: "الخيار الأكثر شيوعاً", 
+      discount: "وفر 17 ريال", 
+      features: ["توفير مميز", "خدمة أسبوعية", "مياه معدنية"],
+      emoji: "🥤",
+      popular: true
+    },
+    { 
+      id: "family", 
+      name: "باقة العائلة 5 جالونات", 
+      price: 65.99, 
+      originalPrice: 89.99,
+      description: "أفضل قيمة للعائلات الكبيرة", 
+      discount: "وفر 24 ريال", 
+      features: ["أفضل قيمة", "خدمة شهرية", "خصم إضافي"],
+      emoji: "🏠",
+      popular: false
+    }
   ]
 
   const handleInputChange = (field: string, value: string) => {
@@ -85,8 +113,8 @@ const OrderModal = ({ children, onOpen }: OrderModalProps) => {
       </DialogTrigger>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center">
-            <ShoppingCart className="h-6 w-6 inline-block mr-2" />
+          <DialogTitle className="text-2xl font-bold text-center flex items-center justify-center gap-2">
+            <ShoppingCart className="h-6 w-6 text-primary" />
             اطلب الآن - طلب توصيل المياه
           </DialogTitle>
           <DialogDescription className="text-center text-muted-foreground">
@@ -95,169 +123,153 @@ const OrderModal = ({ children, onOpen }: OrderModalProps) => {
         </DialogHeader>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {/* Order Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-4">
-              <div>
-                <Label htmlFor="name" className="flex items-center gap-2">
-                  <User className="h-4 w-4" />
-                  الاسم الكامل *
-                </Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange("name", e.target.value)}
-                  placeholder="أدخل اسمك الكامل"
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="phone" className="flex items-center gap-2">
-                  <Phone className="h-4 w-4" />
-                  رقم الهاتف *
-                </Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => handleInputChange("phone", e.target.value)}
-                  placeholder="أدخل رقم هاتفك"
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="address" className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
-                  عنوان التوصيل *
-                </Label>
-                <Textarea
-                  id="address"
-                  value={formData.address}
-                  onChange={(e) => handleInputChange("address", e.target.value)}
-                  placeholder="أدخل العنوان الكامل للتوصيل"
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="package" className="flex items-center gap-2">
-                  <Package className="h-4 w-4" />
-                  نوع الباقة *
-                </Label>
-                <Select value={formData.packageType} onValueChange={(value) => handleInputChange("packageType", value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="اختر نوع الباقة" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {packages.map((pkg) => (
-                      <SelectItem key={pkg.id} value={pkg.id}>
-                        {pkg.name} - ${pkg.price}
-                      </SelectItem>
+          {/* Package Selection */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">اختر الباقة</h3>
+            <div className="grid gap-3">
+              {packages.map((pkg) => (
+                <div
+                  key={pkg.id}
+                  className={`relative p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
+                    formData.packageType === pkg.id
+                      ? 'border-primary bg-primary/5 shadow-md'
+                      : 'border-gray-200 hover:border-primary/50 hover:bg-gray-50'
+                  }`}
+                  onClick={() => handleInputChange("packageType", pkg.id)}
+                >
+                  {pkg.popular && (
+                    <div className="absolute -top-2 left-4">
+                      <span className="bg-primary text-white text-xs px-3 py-1 rounded-full font-medium">
+                        الأكثر شيوعاً
+                      </span>
+                    </div>
+                  )}
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="text-2xl">{pkg.emoji}</div>
+                      <div>
+                        <h4 className="font-semibold text-sm">{pkg.name}</h4>
+                        <p className="text-xs text-muted-foreground">{pkg.description}</p>
+                        {pkg.discount && (
+                          <p className="text-xs text-green-600 font-medium">{pkg.discount}</p>
+                        )}
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="flex items-center gap-2">
+                        <div className="text-lg font-bold text-primary">${pkg.price}</div>
+                        {pkg.originalPrice && (
+                          <div className="text-sm text-muted-foreground line-through">${pkg.originalPrice}</div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-3 flex flex-wrap gap-1">
+                    {pkg.features.map((feature, index) => (
+                      <span key={index} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                        {feature}
+                      </span>
                     ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Order Form */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">معلومات التوصيل</h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-4">
                 <div>
-                  <Label htmlFor="deliveryDate" className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
-                    تاريخ التوصيل المفضل
+                  <Label htmlFor="name" className="flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    الاسم الكامل *
                   </Label>
                   <Input
-                    id="deliveryDate"
-                    type="date"
-                    value={formData.deliveryDate}
-                    onChange={(e) => handleInputChange("deliveryDate", e.target.value)}
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange("name", e.target.value)}
+                    placeholder="أدخل اسمك الكامل"
+                    required
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="frequency">تكرار التوصيل</Label>
-                  <Select value={formData.deliveryFrequency} onValueChange={(value) => handleInputChange("deliveryFrequency", value)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="اختر التكرار" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="once">طلب واحد</SelectItem>
-                      <SelectItem value="weekly">أسبوعياً</SelectItem>
-                      <SelectItem value="biweekly">كل أسبوعين</SelectItem>
-                      <SelectItem value="monthly">شهرياً</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <Label htmlFor="phone" className="flex items-center gap-2">
+                    <Phone className="h-4 w-4" />
+                    رقم الهاتف *
+                  </Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange("phone", e.target.value)}
+                    placeholder="أدخل رقم هاتفك"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="address" className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4" />
+                    عنوان التوصيل *
+                  </Label>
+                  <Textarea
+                    id="address"
+                    value={formData.address}
+                    onChange={(e) => handleInputChange("address", e.target.value)}
+                    placeholder="أدخل العنوان الكامل للتوصيل"
+                    required
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="deliveryDate" className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      تاريخ التوصيل المفضل
+                    </Label>
+                    <Input
+                      id="deliveryDate"
+                      type="date"
+                      value={formData.deliveryDate}
+                      onChange={(e) => handleInputChange("deliveryDate", e.target.value)}
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="frequency">تكرار التوصيل</Label>
+                    <Select value={formData.deliveryFrequency} onValueChange={(value) => handleInputChange("deliveryFrequency", value)}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="اختر التكرار" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="once">طلب واحد</SelectItem>
+                        <SelectItem value="weekly">أسبوعياً</SelectItem>
+                        <SelectItem value="biweekly">كل أسبوعين</SelectItem>
+                        <SelectItem value="monthly">شهرياً</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="notes">ملاحظات إضافية</Label>
+                  <Textarea
+                    id="notes"
+                    value={formData.notes}
+                    onChange={(e) => handleInputChange("notes", e.target.value)}
+                    placeholder="أي ملاحظات أو طلبات خاصة"
+                  />
                 </div>
               </div>
 
-              <div>
-                <Label htmlFor="notes">ملاحظات إضافية</Label>
-                <Textarea
-                  id="notes"
-                  value={formData.notes}
-                  onChange={(e) => handleInputChange("notes", e.target.value)}
-                  placeholder="أي ملاحظات أو طلبات خاصة"
-                />
-              </div>
-            </div>
-
-            <Button type="submit" variant="water" size="lg" className="w-full">
-              تأكيد الطلب
-            </Button>
-          </form>
-
-          {/* Order Summary */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold">ملخص الطلب</h3>
-            
-            {selectedPackage && (
-              <Card>
-                <CardContent className="p-4">
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h4 className="font-semibold">{selectedPackage.name}</h4>
-                        <p className="text-sm text-muted-foreground">{selectedPackage.description}</p>
-                        {selectedPackage.discount && (
-                          <p className="text-sm text-green-600 font-medium">{selectedPackage.discount}</p>
-                        )}
-                      </div>
-                      <div className="text-right">
-                        <div className="text-xl font-bold text-primary">${selectedPackage.price}</div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            <Card className="bg-accent/50">
-              <CardContent className="p-4">
-                <h4 className="font-semibold mb-3">مميزات خدمتنا:</h4>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    توصيل مجاني في معظم المناطق
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    مياه نقية 100% مفلترة
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    خدمة على مدار 24/7
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    مواعيد مرنة للتوصيل
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <div className="text-xs text-muted-foreground">
-              * سيتم التواصل معك خلال 24 ساعة لتأكيد الطلب وتحديد موعد التوصيل
-            </div>
+              <Button type="submit" size="lg" className="w-full">
+                تأكيد الطلب
+              </Button>
+            </form>
           </div>
         </div>
       </DialogContent>

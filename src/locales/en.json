@@ -113,6 +113,86 @@
     "story": "STORY",
     "storyText": "Our company was founded in 2010. When faced initially as a personal health issue to access fresh, clean drinking water. The company is world-class and lead."
   },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Discover our premium selection of bottled water products, carefully sourced and tested for your health and satisfaction",
+    "popular": "Popular",
+    "addToCart": "Add to Cart",
+    "getQuote": "Get Quote",
+    "subscriptionPlans": "View Subscription Plans",
+    "bulkOrders": "Need Bulk Orders?",
+    "bulkDescription": "Contact us for special pricing on bulk orders, subscription plans, and corporate delivery services.",
+    "features": {
+      "naturalSpring": "Natural Spring",
+      "phBalanced": "pH Balanced",
+      "mineralRich": "Mineral Rich",
+      "bulkSavings": "Bulk Savings",
+      "bpaFree": "BPA Free",
+      "longShelfLife": "Long Shelf Life",
+      "officeDelivery": "Office Delivery",
+      "reusable": "Reusable",
+      "costEffective": "Cost Effective",
+      "alkaline": "pH 9.5+",
+      "enhancedMinerals": "Enhanced Minerals",
+      "antioxidants": "Antioxidants"
+    },
+    "categories": {
+      "premium": "Premium Natural Water",
+      "family": "Family Pack Water",
+      "office": "Office Water Dispenser",
+      "alkaline": "Alkaline Water Plus"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Stay informed with the latest insights about water quality, health benefits, and industry news",
+    "featured": "Featured Articles",
+    "allArticles": "All Articles",
+    "readMore": "Read More",
+    "read": "Read",
+    "minRead": "min read",
+    "categories": {
+      "all": "All",
+      "health": "Health",
+      "tips": "Tips",
+      "science": "Science",
+      "environment": "Environment",
+      "quality": "Quality",
+      "business": "Business"
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Subscribe to our newsletter to get the latest articles and water industry insights delivered to your inbox",
+      "placeholder": "Enter your email",
+      "subscribe": "Subscribe"
+    },
+    "posts": {
+      "springWaterBenefits": {
+        "title": "The Benefits of Drinking Natural Spring Water",
+        "excerpt": "Discover why natural spring water is the perfect choice for your daily hydration needs and overall health"
+      },
+      "summerHydration": {
+        "title": "How to Stay Hydrated During Summer",
+        "excerpt": "Essential tips and tricks to maintain proper hydration levels during the hot summer months"
+      },
+      "waterPurification": {
+        "title": "The Science Behind Water Purification",
+        "excerpt": "Learn about the advanced filtration and purification processes that ensure your water is safe and clean"
+      },
+      "sustainablePractices": {
+        "title": "Sustainable Water Delivery Practices",
+        "excerpt": "How we're committed to environmental sustainability while delivering premium water to your doorstep"
+      },
+      "qualityTesting": {
+        "title": "Water Quality Testing: What You Need to Know",
+        "excerpt": "Understanding the rigorous testing processes that ensure every bottle meets the highest quality standards"
+      },
+      "workplaceHydration": {
+        "title": "Office Hydration: Boosting Workplace Productivity",
+        "excerpt": "How proper hydration in the workplace can improve focus, energy, and overall employee well-being"
+      }
+    }
+  },
   "footer": {
     "downloadApp": "Stay Hydrated",
     "downloadDescription": "Download Nova Water app and order now",
