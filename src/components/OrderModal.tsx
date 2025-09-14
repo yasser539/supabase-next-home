@@ -3,10 +3,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Card, CardContent } from "@/components/ui/card"
-import { ShoppingCart, Package, MapPin, Phone, User, Calendar } from "lucide-react"
+import { ShoppingCart, MapPin, Phone, User } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import { useToast } from "@/hooks/use-toast"
 
@@ -23,45 +21,9 @@ const OrderModal = ({ children, onOpen }: OrderModalProps) => {
     name: "",
     phone: "",
     address: "",
-    packageType: "",
-    deliveryDate: "",
-    deliveryFrequency: "",
     notes: ""
   })
 
-  const packages = [
-    { 
-      id: "single", 
-      name: "جالون واحد 5 لتر", 
-      price: 15.99, 
-      originalPrice: 19.99,
-      description: "مثالي للعائلات الصغيرة", 
-      features: ["مياه نقية 100%", "تسليم سريع", "ضمان الجودة"],
-      emoji: "💧"
-    },
-    { 
-      id: "triple", 
-      name: "باقة 3 جالونات", 
-      price: 42.99, 
-      originalPrice: 59.99,
-      description: "الخيار الأكثر شيوعاً", 
-      discount: "وفر 17 ريال", 
-      features: ["توفير مميز", "خدمة أسبوعية", "مياه معدنية"],
-      emoji: "🥤",
-      popular: true
-    },
-    { 
-      id: "family", 
-      name: "باقة العائلة 5 جالونات", 
-      price: 65.99, 
-      originalPrice: 89.99,
-      description: "أفضل قيمة للعائلات الكبيرة", 
-      discount: "وفر 24 ريال", 
-      features: ["أفضل قيمة", "خدمة شهرية", "خصم إضافي"],
-      emoji: "🏠",
-      popular: false
-    }
-  ]
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
@@ -71,7 +33,7 @@ const OrderModal = ({ children, onOpen }: OrderModalProps) => {
     e.preventDefault()
     
     // Validate required fields
-    if (!formData.name || !formData.phone || !formData.address || !formData.packageType) {
+    if (!formData.name || !formData.phone || !formData.address) {
       toast({
         title: "خطأ في النموذج",
         description: "يرجى ملء جميع الحقول المطلوبة",
@@ -91,15 +53,12 @@ const OrderModal = ({ children, onOpen }: OrderModalProps) => {
       name: "",
       phone: "",
       address: "",
-      packageType: "",
-      deliveryDate: "",
-      deliveryFrequency: "",
       notes: ""
     })
     setIsOpen(false)
   }
 
-  const selectedPackage = packages.find(pkg => pkg.id === formData.packageType)
+  
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => {
@@ -122,7 +81,7 @@ const OrderModal = ({ children, onOpen }: OrderModalProps) => {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="max-w-2xl mx-auto">
           {/* Order Form */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">معلومات التوصيل</h3>
@@ -170,7 +129,6 @@ const OrderModal = ({ children, onOpen }: OrderModalProps) => {
                     required
                   />
                 </div>
-
 
                 <div>
                   <Label htmlFor="notes">ملاحظات إضافية</Label>
