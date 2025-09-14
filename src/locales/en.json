@@ -6,7 +6,8 @@
     "products": "Products",
     "services": "Services",
     "blog": "Blog",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "careers": "Careers"
   },
   "validation": {
     "required": "Required",

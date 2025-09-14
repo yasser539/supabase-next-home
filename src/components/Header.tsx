@@ -95,6 +95,13 @@ const Header = () => {
               {t('nav.contact')}
               <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-primary group-hover:w-4/5 group-hover:left-[10%] transition-all duration-300"></div>
             </Link>
+            <Link 
+              to="/careers" 
+              className="px-5 py-3 text-foreground hover:text-primary hover:bg-primary/5 rounded-xl transition-all duration-300 font-medium relative group"
+            >
+              {t('nav.careers')}
+              <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-primary group-hover:w-4/5 group-hover:left-[10%] transition-all duration-300"></div>
+            </Link>
           </nav>
 
           {/* Modern Action Buttons */}
@@ -176,6 +183,13 @@ const Header = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('nav.contact')}
+              </Link>
+              <Link 
+                to="/careers" 
+                className="block px-4 py-3 text-foreground hover:text-primary hover:bg-primary/5 rounded-xl transition-all duration-300 font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t('nav.careers')}
               </Link>
               <div className="pt-4 border-t border-border/50">
                 <OrderModal onOpen={() => setIsMobileMenuOpen(false)}>
