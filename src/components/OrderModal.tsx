@@ -123,60 +123,6 @@ const OrderModal = ({ children, onOpen }: OrderModalProps) => {
         </DialogHeader>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {/* Package Selection */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">اختر الباقة</h3>
-            <div className="grid gap-3">
-              {packages.map((pkg) => (
-                <div
-                  key={pkg.id}
-                  className={`relative p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
-                    formData.packageType === pkg.id
-                      ? 'border-primary bg-primary/5 shadow-md'
-                      : 'border-gray-200 hover:border-primary/50 hover:bg-gray-50'
-                  }`}
-                  onClick={() => handleInputChange("packageType", pkg.id)}
-                >
-                  {pkg.popular && (
-                    <div className="absolute -top-2 left-4">
-                      <span className="bg-primary text-white text-xs px-3 py-1 rounded-full font-medium">
-                        الأكثر شيوعاً
-                      </span>
-                    </div>
-                  )}
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="text-2xl">{pkg.emoji}</div>
-                      <div>
-                        <h4 className="font-semibold text-sm">{pkg.name}</h4>
-                        <p className="text-xs text-muted-foreground">{pkg.description}</p>
-                        {pkg.discount && (
-                          <p className="text-xs text-green-600 font-medium">{pkg.discount}</p>
-                        )}
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="flex items-center gap-2">
-                        <div className="text-lg font-bold text-primary">${pkg.price}</div>
-                        {pkg.originalPrice && (
-                          <div className="text-sm text-muted-foreground line-through">${pkg.originalPrice}</div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-3 flex flex-wrap gap-1">
-                    {pkg.features.map((feature, index) => (
-                      <span key={index} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
           {/* Order Form */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">معلومات التوصيل</h3>
