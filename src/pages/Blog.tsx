@@ -100,23 +100,6 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Categories Filter */}
-      <section className="py-8 border-b">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={category === "All" ? "default" : "outline"}
-                size="sm"
-                className="rounded-full"
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Featured Posts */}
       <section className="py-12">
