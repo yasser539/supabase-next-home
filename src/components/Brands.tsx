@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next"
+import { Button } from "@/components/ui/button"
 
 const brands = [
   {
@@ -39,71 +40,141 @@ const Brands = () => {
   const { t } = useTranslation()
 
   return (
-    <section className="py-16 bg-gradient-to-b from-background to-muted/30">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            {t('brands.title', 'شركاؤنا المميزون')}
+    <section className="py-24 bg-gradient-to-br from-muted/20 via-background to-primary/5 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-10 left-1/4 w-96 h-96 bg-gradient-primary/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-gradient-secondary/10 rounded-full blur-3xl animate-float" style={{animationDelay: '3s'}}></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative">
+        {/* Enhanced Section Header */}
+        <div className="text-center mb-20 animate-fade-in-up">
+          <div className="mb-6">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4 border border-primary/20">
+              🤝 شركاؤنا
+            </span>
+          </div>
+          
+          <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+            <span className="text-foreground">نتعاون مع</span>
+            <br />
+            <span className="heading-gradient">أفضل العلامات التجارية</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('brands.subtitle', 'نتعامل مع أفضل العلامات التجارية لنضمن لك أعلى معايير الجودة')}
+          
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            {t('brands.subtitle', 'شراكات استراتيجية مع أكبر المؤسسات لضمان أعلى معايير الجودة والخدمة المتميزة لعملائنا')}
           </p>
         </div>
 
-        {/* Brands Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8 items-center">
+        {/* Enhanced Brands Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-20">
           {brands.map((brand, index) => (
             <div
               key={brand.name}
-              className="flex items-center justify-center p-6 bg-white rounded-lg shadow-soft hover:shadow-medium transition-all duration-300 group"
+              className="group relative overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <img
-                src={brand.logo}
-                alt={`${brand.name} logo`}
-                className="h-12 w-auto max-w-full opacity-70 group-hover:opacity-100 transition-opacity duration-300 filter grayscale group-hover:grayscale-0"
-                loading="lazy"
-              />
+              <div className="modern-card group-hover:shadow-colored transition-all duration-500 relative">
+                {/* Brand logo */}
+                <div className="flex items-center justify-center h-20">
+                  <img
+                    src={brand.logo}
+                    alt={`${brand.name} logo`}
+                    className="h-12 w-auto max-w-full opacity-70 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                
+                {/* Brand name */}
+                <div className="mt-4 text-center">
+                  <p className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                    {brand.name}
+                  </p>
+                </div>
+                
+                {/* Hover effect overlay */}
+                <div className="absolute inset-0 bg-gradient-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Trust Indicators */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-          <div className="group">
-            <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
-              25+
-            </div>
-            <div className="text-muted-foreground">
-              {t('brands.partners', 'شريك معتمد')}
-            </div>
-          </div>
-          
-          <div className="group">
-            <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
-              100%
-            </div>
-            <div className="text-muted-foreground">
-              {t('brands.quality', 'ضمان الجودة')}
+        {/* Enhanced Trust Indicators */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center animate-fade-in-up">
+          <div className="group modern-card hover:shadow-colored transition-all duration-500">
+            <div className="p-8">
+              <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-medium">
+                <span className="text-white font-bold text-2xl">25+</span>
+              </div>
+              <div className="text-2xl font-bold text-primary mb-2">
+                شريك معتمد
+              </div>
+              <div className="text-muted-foreground">
+                {t('brands.partners', 'علاقات شراكة قوية')}
+              </div>
             </div>
           </div>
           
-          <div className="group">
-            <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
-              24/7
+          <div className="group modern-card hover:shadow-colored transition-all duration-500">
+            <div className="p-8">
+              <div className="w-16 h-16 bg-gradient-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-medium">
+                <span className="text-white font-bold text-2xl">100%</span>
+              </div>
+              <div className="text-2xl font-bold text-primary mb-2">
+                ضمان الجودة
+              </div>
+              <div className="text-muted-foreground">
+                {t('brands.quality', 'معايير عالمية للجودة')}
+              </div>
             </div>
-            <div className="text-muted-foreground">
-              {t('brands.support', 'دعم فني')}
+          </div>
+          
+          <div className="group modern-card hover:shadow-colored transition-all duration-500">
+            <div className="p-8">
+              <div className="w-16 h-16 bg-gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-medium">
+                <span className="text-white font-bold text-xl">24/7</span>
+              </div>
+              <div className="text-2xl font-bold text-primary mb-2">
+                دعم فني
+              </div>
+              <div className="text-muted-foreground">
+                {t('brands.support', 'خدمة عملاء متواصلة')}
+              </div>
             </div>
           </div>
 
-          <div className="group">
-            <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
-              5★
+          <div className="group modern-card hover:shadow-colored transition-all duration-500">
+            <div className="p-8">
+              <div className="w-16 h-16 bg-gradient-warm rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-medium">
+                <span className="text-white font-bold text-2xl">5★</span>
+              </div>
+              <div className="text-2xl font-bold text-primary mb-2">
+                تقييم العملاء
+              </div>
+              <div className="text-muted-foreground">
+                {t('brands.rating', 'رضا عملاء استثنائي')}
+              </div>
             </div>
-            <div className="text-muted-foreground">
-              {t('brands.rating', 'تقييم العملاء')}
+          </div>
+        </div>
+        
+        {/* Call to Action Section */}
+        <div className="mt-20 text-center">
+          <div className="glass-card p-12 rounded-3xl max-w-4xl mx-auto">
+            <h3 className="text-3xl font-bold text-foreground mb-4">
+              انضم إلى آلاف العملاء الراضين
+            </h3>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              اكتشف الفرق مع خدماتنا المتميزة وشراكاتنا الاستراتيجية
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="modern-btn text-lg px-8 py-4">
+                ابدأ الآن
+              </Button>
+              <Button variant="outline" size="lg" className="border-2 hover:bg-primary/5 text-lg px-8 py-4">
+                تعرف على المزيد
+              </Button>
             </div>
           </div>
         </div>

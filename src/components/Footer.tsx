@@ -1,11 +1,18 @@
 import { Button } from "@/components/ui/button"
-import { MapPin, Phone, Mail } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Separator } from "@/components/ui/separator"
 import { 
+  MapPin, 
+  Phone, 
+  Mail, 
+  Clock, 
   Facebook, 
   Twitter, 
   Instagram, 
-  Linkedin, 
-  Youtube 
+  Linkedin,
+  Droplets,
+  ArrowRight,
+  Heart
 } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
@@ -13,209 +20,226 @@ import { Link } from "react-router-dom"
 const Footer = () => {
   const { t } = useTranslation()
 
-  const downloadButtons = [
-    {
-      name: "App Store",
-      icon: "🍎",
-      text: "Download on the",
-      subtext: "App Store"
-    },
-    {
-      name: "Google Play",
-      icon: "📱",
-      text: "Get it on",
-      subtext: "Google Play"
-    },
-    {
-      name: "App Gallery",
-      icon: "📲",
-      text: "Explore it on",
-      subtext: "App Gallery"
-    }
-  ]
-
-  const paymentMethods = [
-    { name: "Visa", icon: "💳" },
-    { name: "Mastercard", icon: "💳" },
-    { name: "Apple Pay", icon: "📱" },
-    { name: "STC Pay", icon: "💰" },
-    { name: "Mada", icon: "💳" },
-    { name: "Credit Card", icon: "💳" }
-  ]
-
   const socialLinks = [
-    { name: "Snapchat", icon: "👻", href: "#" },
-    { name: "LinkedIn", icon: Linkedin, href: "#" },
-    { name: "TikTok", icon: "🎵", href: "#" },
-    { name: "Twitter", icon: Twitter, href: "#" },
-    { name: "YouTube", icon: Youtube, href: "#" },
-    { name: "Instagram", icon: Instagram, href: "#" },
-    { name: "Facebook", icon: Facebook, href: "#" }
+    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Linkedin, href: "#", label: "LinkedIn" }
   ]
+
+  const footerLinks = {
+    company: [
+      { label: t('footer.about', 'من نحن'), href: '/#about' },
+      { label: t('footer.services', 'خدماتنا'), href: '/services' },
+      { label: t('footer.careers', 'الوظائف'), href: '/careers' },
+      { label: t('footer.news', 'الأخبار'), href: '/blog' }
+    ],
+    services: [
+      { label: t('footer.home_delivery', 'توصيل منزلي'), href: '/services/home' },
+      { label: t('footer.office_delivery', 'توصيل مكاتب'), href: '/services/office' },
+      { label: t('footer.bulk_orders', 'طلبات بالجملة'), href: '/services/bulk' },
+      { label: t('footer.subscription', 'اشتراكات شهرية'), href: '/services/subscription' }
+    ],
+    support: [
+      { label: t('footer.contact', 'اتصل بنا'), href: '/contact' },
+      { label: t('footer.faq', 'الأسئلة الشائعة'), href: '/faq' },
+      { label: t('footer.help', 'المساعدة'), href: '/help' },
+      { label: t('footer.track', 'تتبع الطلب'), href: '/track' }
+    ]
+  }
 
   return (
-    <footer className="bg-primary text-white">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          
-          {/* App Download Section */}
-          <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-6">
-              {t('footer.downloadApp', 'حافظ على ترطيبك')}
-            </h3>
-            <p className="text-sm text-white/80 mb-6">
-              {t('footer.downloadDescription', 'حمل تطبيق مياه نوفا اطلب الآن')}
-            </p>
-            <div className="space-y-3">
-              {downloadButtons.map((button, index) => (
-                <Button
-                  key={index}
-                  variant="outline"
-                  className="w-full bg-white/10 border-white/20 text-white hover:bg-white/20 justify-start text-xs"
-                >
-                  <span className="mr-2">{button.icon}</span>
-                  <div className="text-left">
-                    <div className="text-xs opacity-80">{button.text}</div>
-                    <div className="font-semibold">{button.subtext}</div>
-                  </div>
-                </Button>
-              ))}
+    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-primary-dark text-white relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-primary rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-secondary rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-accent rounded-full blur-3xl opacity-50"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative">
+        {/* Newsletter Section */}
+        <div className="py-16 border-b border-white/10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-2xl mb-4 shadow-glow">
+                <Mail className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-3xl lg:text-4xl font-bold mb-4">
+                {t('footer.newsletter_title', 'ابق على اتصال معنا')}
+              </h3>
+              <p className="text-xl text-white/80 max-w-2xl mx-auto">
+                {t('footer.newsletter_desc', 'احصل على آخر العروض والأخبار مباشرة في بريدك الإلكتروني')}
+              </p>
             </div>
-          </div>
-
-          {/* Contact Info */}
-          <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-6">
-              {t('footer.contact', 'اتصل بنا')}
-            </h3>
-            <div className="space-y-4 text-sm">
-              <div className="flex items-start space-x-3 rtl:space-x-reverse">
-                <MapPin className="h-4 w-4 mt-1 text-white/80" />
-                <div>
-                  <p>{t('footer.address', 'شارع التحلية في التونسية، الرياض')}</p>
-                  <p>{t('footer.addressDetails', 'المملكة العربية السعودية، 13249')}</p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-3 rtl:space-x-reverse">
-                <Phone className="h-4 w-4 text-white/80" />
-                <span>9200 33 445</span>
-              </div>
-              <div className="flex items-center space-x-3 rtl:space-x-reverse">
-                <Mail className="h-4 w-4 text-white/80" />
-                <span>info@novawater.com</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Help Center */}
-          <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-6">
-              {t('footer.helpCenter', 'مركز المساعدة')}
-            </h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link to="/faq" className="text-white/80 hover:text-white transition-colors">
-                  {t('footer.commonQuestions', 'الأسئلة الشائعة')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms" className="text-white/80 hover:text-white transition-colors">
-                  {t('footer.termsConditions', 'الشروط والأحكام')}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-6">
-              {t('footer.services', 'الخدمات')}
-            </h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link to="/products" className="text-white/80 hover:text-white transition-colors">
-                  {t('footer.basicGroup', 'المجموعة الأساسية')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/products" className="text-white/80 hover:text-white transition-colors">
-                  {t('footer.sportWater', 'مياه نوفا الرياضية')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/products" className="text-white/80 hover:text-white transition-colors">
-                  {t('footer.luxuryGroup', 'مجموعة مياه نوفا الفاخرة')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/products" className="text-white/80 hover:text-white transition-colors">
-                  {t('footer.bigGroup', 'المجموعة الكبيرة')}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* About Us */}
-          <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-6">
-              {t('footer.aboutUs', 'عن نوفا')}
-            </h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link to="/about" className="text-white/80 hover:text-white transition-colors">
-                  {t('footer.aboutInfo', 'معلومات عنا')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/news" className="text-white/80 hover:text-white transition-colors">
-                  {t('footer.news', 'الأخبار')}
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Payment Methods & Social Media */}
-        <div className="mt-12 pt-8 border-t border-white/20">
-          <div className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0">
             
-            {/* Payment Methods */}
-            <div className="flex flex-wrap gap-3">
-              {paymentMethods.map((method, index) => (
-                <div
-                  key={index}
-                  className="bg-white/10 rounded-lg p-2 min-w-[60px] h-10 flex items-center justify-center"
-                >
-                  <span className="text-lg">{method.icon}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Social Media */}
-            <div className="flex space-x-3 rtl:space-x-reverse">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
-                  aria-label={social.name}
-                >
-                  {typeof social.icon === 'string' ? (
-                    <span>{social.icon}</span>
-                  ) : (
-                    <social.icon className="h-5 w-5" />
-                  )}
-                </a>
-              ))}
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <Input
+                type="email"
+                placeholder={t('footer.email_placeholder', 'أدخل بريدك الإلكتروني')}
+                className="bg-white/10 border-white/20 text-white placeholder:text-white/60 backdrop-blur-sm flex-1"
+              />
+              <Button className="modern-btn group">
+                <span className="flex items-center gap-2">
+                  {t('footer.subscribe', 'اشترك')}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Button>
             </div>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-8 pt-6 border-t border-white/20 text-center">
-          <p className="text-sm text-white/80">
-            {t('footer.copyright', 'جميع الحقوق محفوظة © نوفا 2024')}
-          </p>
+        {/* Main Footer Content */}
+        <div className="py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+            {/* Company Info */}
+            <div className="lg:col-span-2 space-y-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-gradient-primary rounded-xl shadow-medium flex items-center justify-center">
+                  <Droplets className="h-6 w-6 text-white" />
+                </div>
+                <div className="text-2xl font-bold heading-gradient">
+                  {t('logo', 'مياه نقية')}
+                </div>
+              </div>
+              
+              <p className="text-white/80 text-lg leading-relaxed max-w-md">
+                {t('footer.company_desc', 'رائدون في تقديم أنقى المياه وأفضل خدمات التوصيل منذ أكثر من 15 عاماً. جودة استثنائية وخدمة لا تُضاهى.')}
+              </p>
+
+              {/* Contact Info */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                  <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                    <MapPin className="h-5 w-5" />
+                  </div>
+                  <span>25 W 51st St, New York, NY 10019</span>
+                </div>
+                
+                <div className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                  <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                    <Phone className="h-5 w-5" />
+                  </div>
+                  <span>212.262.3200</span>
+                </div>
+                
+                <div className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                  <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                    <Clock className="h-5 w-5" />
+                  </div>
+                  <span>{t('footer.working_hours', '24/7 - خدمة على مدار الساعة')}</span>
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex gap-3">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-glow"
+                  >
+                    <social.icon className="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Company Links */}
+            <div>
+              <h4 className="text-xl font-bold mb-6 text-white">
+                {t('footer.company', 'الشركة')}
+              </h4>
+              <ul className="space-y-4">
+                {footerLinks.company.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      to={link.href}
+                      className="text-white/70 hover:text-white transition-colors duration-300 hover:translate-x-1 block"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services Links */}
+            <div>
+              <h4 className="text-xl font-bold mb-6 text-white">
+                {t('footer.services', 'الخدمات')}
+              </h4>
+              <ul className="space-y-4">
+                {footerLinks.services.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      to={link.href}
+                      className="text-white/70 hover:text-white transition-colors duration-300 hover:translate-x-1 block"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Support Links */}
+            <div>
+              <h4 className="text-xl font-bold mb-6 text-white">
+                {t('footer.support', 'الدعم')}
+              </h4>
+              <ul className="space-y-4">
+                {footerLinks.support.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      to={link.href}
+                      className="text-white/70 hover:text-white transition-colors duration-300 hover:translate-x-1 block"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <Separator className="bg-white/10" />
+        <div className="py-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-white/60 text-center md:text-left">
+              <p className="flex items-center gap-2 justify-center md:justify-start">
+                © 2024 {t('logo', 'مياه نقية')}. 
+                <span className="flex items-center gap-1">
+                  {t('footer.rights', 'جميع الحقوق محفوظة')}
+                  <Heart className="h-4 w-4 text-red-400 animate-pulse" />
+                </span>
+              </p>
+            </div>
+            
+            <div className="flex items-center gap-6 text-sm">
+              <Link 
+                to="/privacy" 
+                className="text-white/60 hover:text-white transition-colors"
+              >
+                {t('footer.privacy', 'سياسة الخصوصية')}
+              </Link>
+              <Link 
+                to="/terms" 
+                className="text-white/60 hover:text-white transition-colors"
+              >
+                {t('footer.terms', 'الشروط والأحكام')}
+              </Link>
+              <Link 
+                to="/cookies" 
+                className="text-white/60 hover:text-white transition-colors"
+              >
+                {t('footer.cookies', 'ملفات تعريف الارتباط')}
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
